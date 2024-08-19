@@ -1,0 +1,23 @@
+version: '3'
+
+tasks:
+  generate:
+    aliases:
+      - gen
+    desc: "Generate proto file!"
+    cmds: 
+      - protoc -I proto proto/sso/sso.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go --go_opt=paths=source_relative
+
+  migrate:
+    aliases:
+      - mig
+    desc: "Run database migrations!"
+    cmds:
+      - go run ./cmd/migrator --storage-path=./storage/sso.db --migrations-path=./migrations
+  
+  run:
+    aliases:
+      - r
+    desc: "Run app!"
+    cmds:
+      - go run cmd/sso/main.go --config=./config/local.yaml   
