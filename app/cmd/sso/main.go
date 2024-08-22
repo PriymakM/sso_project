@@ -26,10 +26,6 @@ func main() {
 
 	application.GRPCServer.Stop()
 	log.Info("application  stopped")
-
-	// init logger
-	// init app
-	// run grpc srver
 }
 
 func setupLogger(env string) *slog.Logger {
